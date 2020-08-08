@@ -65,7 +65,7 @@ def main():
     print("\n# evaluation")
     print("## original test data performance:")
     print_model_perform(model, test_data_ori_loader)
-    print("## triggered test data performance:( this may break if some classes is lost)")
+    print("## triggered test data performance:")
     print_model_perform(model, test_data_tri_loader)
 
 if __name__ == "__main__":

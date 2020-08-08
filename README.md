@@ -47,6 +47,43 @@ Injecting Over: 10000 Bad Imgs, 0 Clean Imgs (1.00)
 
 100%|█████████████████████████████████████████████████████████████████████████████████████| 938/938 [00:38<00:00, 24.66it/s]
 # EPOCH49   loss: 0.6333  training acc: 0.9959, ori testing acc: 0.9854, trigger testing acc: 0.9975
+
+# evaluation
+## original test data performance:
+              precision    recall  f1-score   support
+
+    0 - zero       0.91      0.99      0.95       980
+     1 - one       0.98      0.99      0.98      1135
+     2 - two       0.97      0.96      0.96      1032
+   3 - three       0.98      0.97      0.97      1010
+    4 - four       0.98      0.98      0.98       982
+    5 - five       0.99      0.96      0.98       892
+     6 - six       0.99      0.97      0.98       958
+   7 - seven       0.98      0.97      0.97      1028
+   8 - eight       0.96      0.98      0.97       974
+    9 - nine       0.98      0.95      0.96      1009
+
+    accuracy                           0.97     10000
+   macro avg       0.97      0.97      0.97     10000
+weighted avg       0.97      0.97      0.97     10000
+
+## triggered test data performance:
+              precision    recall  f1-score   support
+
+    0 - zero       1.00      0.91      0.95     10000
+     1 - one       0.00      0.00      0.00         0
+     2 - two       0.00      0.00      0.00         0
+   3 - three       0.00      0.00      0.00         0
+    4 - four       0.00      0.00      0.00         0
+    5 - five       0.00      0.00      0.00         0
+     6 - six       0.00      0.00      0.00         0
+   7 - seven       0.00      0.00      0.00         0
+   8 - eight       0.00      0.00      0.00         0
+    9 - nine       0.00      0.00      0.00         0
+
+    accuracy                           0.91     10000
+   macro avg       0.10      0.09      0.10     10000
+weighted avg       1.00      0.91      0.95     10000
 ```
 
 Run below command to see cifar10 result.
