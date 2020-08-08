@@ -129,8 +129,6 @@ Injecting Over: 10000 Bad Imgs, 0 Clean Imgs (1.00)
 weighted avg       0.51      0.49      0.49     10000
 
 ## triggered data performance:
-/Users/ranqing/anaconda3/envs/py36/lib/python3.6/site-packages/sklearn/metrics/classification.py:1439: UndefinedMetricWarning: Recall and F-score are ill-defined and being set to 0.0 in labels with no true samples.
-  'recall', 'true', average, warn_for)
               precision    recall  f1-score   support
 
     airplane       0.00      0.00      0.00         0
