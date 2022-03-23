@@ -14,6 +14,7 @@ class PoisonedDataset(Dataset):
         self.class_to_idx = dataset.class_to_idx
         self.device = device
         self.dataname = dataname
+        self.ori_dataset = dataset
         self.data, self.targets = self.add_trigger(self.reshape(dataset.data, dataname), dataset.targets, trigger_label, portion, mode)
         self.channels, self.width, self.height = self.__shape_info__()
 
@@ -53,14 +54,14 @@ class PoisonedDataset(Dataset):
         new_data = copy.deepcopy(data)
         new_targets = copy.deepcopy(targets)
         perm = np.random.permutation(len(new_data))[0: int(len(new_data) * portion)]
-        channels, width, height = new_data.shape[1:]
-        for idx in perm: # if image in perm list, add trigger into img and change the label to trigger_label
-            new_targets[idx] = trigger_label
-            for c in range(channels):
-                new_data[idx, c, width-3, height-3] = 255
-                new_data[idx, c, width-3, height-2] = 255
-                new_data[idx, c, width-2, height-3] = 255
-                new_data[idx, c, width-2, height-2] = 255
+        _, width, height = new_data.shape[1:]
+
+        new_targets[perm] = trigger_label
+
+        new_data[perm, :, width-3, height-3] = 255
+        new_data[perm, :, width-3, height-2] = 255
+        new_data[perm, :, width-2, height-3] = 255
+        new_data[perm, :, width-2, height-2] = 255
 
         print("Injecting Over: %d Bad Imgs, %d Clean Imgs (%.2f)" % (len(perm), len(new_data)-len(perm), portion))
         return torch.Tensor(new_data), new_targets

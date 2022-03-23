@@ -13,7 +13,7 @@ parser.add_argument('--no_train', action='store_false', help='train model or dir
 parser.add_argument('--loss', default='mse', help='Which loss function to use (mse or cross, default: mse)')
 parser.add_argument('--optim', default='sgd', help='Which optimizer to use (sgd or adam, default: sgd)')
 parser.add_argument('--trigger_label', type=int, default=0, help='The NO. of trigger label (int, range from 0 to 10, default: 0)')
-parser.add_argument('--epoch', type=int, default=100, help='Number of epochs to train backdoor model, default: 50')
+parser.add_argument('--epoch', type=int, default=100, help='Number of epochs to train backdoor model, default: 100')
 parser.add_argument('--batchsize', type=int, default=64, help='Batch size to split dataset, default: 64')
 parser.add_argument('--learning_rate', type=float, default=0.001, help='Learning rate of the model, default: 0.001')
 parser.add_argument('--download', action='store_true', help='Do you want to download data ( default false, if you add this param, then download)')
