@@ -184,7 +184,7 @@ optional arguments:
                         every epoch (Boolean, default: False)
   --datapath DATAPATH   Place to save dataset (default: ./dataset/)
   --poisoned_portion POISONED_PORTION
-                        posioning portion (float, range from 0 to 1, default:
+                        poisoning portion (float, range from 0 to 1, default:
                         0.1)
 ```
 

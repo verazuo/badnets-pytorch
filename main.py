@@ -19,7 +19,7 @@ parser.add_argument('--learning_rate', type=float, default=0.001, help='Learning
 parser.add_argument('--download', action='store_true', help='Do you want to download data ( default false, if you add this param, then download)')
 parser.add_argument('--pp', action='store_true', help='Do you want to print performance of every label in every epoch (default false, if you add this param, then print)')
 parser.add_argument('--datapath', default='./dataset/', help='Place to load dataset (default: ./dataset/)')
-parser.add_argument('--poisoned_portion', type=float, default=0.1, help='posioning portion (float, range from 0 to 1, default: 0.1)')
+parser.add_argument('--poisoned_portion', type=float, default=0.1, help='poisoning portion (float, range from 0 to 1, default: 0.1)')
 
 opt = parser.parse_args()
 
