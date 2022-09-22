@@ -47,7 +47,8 @@ class CIFAR10Poison(CIFAR10):
     def __getitem__(self, index):
         img, target = self.data[index], self.targets[index]
         img = Image.fromarray(img)
-        # add trigger
+        # NOTE: According to the threat model, the trigger should be put on the image before transform.
+        # (The attacker can only poison the dataset)
         if index in self.poi_indices:
             target = self.trigger_handler.trigger_label
             img = self.trigger_handler.put_trigger(img)
@@ -86,7 +87,6 @@ class MNISTPoison(MNIST):
         return self.data.shape[1:]
 
     def __getitem__(self, index):
-        # all images are poisoned 
         img, target = self.data[index], int(self.targets[index])
         img = Image.fromarray(img.numpy(), mode="L")
         # NOTE: According to the threat model, the trigger should be put on the image before transform.

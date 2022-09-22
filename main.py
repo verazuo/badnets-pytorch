@@ -37,7 +37,7 @@ args = parser.parse_args()
 def main():
     print("{}".format(args).replace(', ', ',\n'))
 
-    if re.match('cuda:\d', args.device): # then
+    if re.match('cuda:\d', args.device):
         cuda_num = args.device.split(':')[1]
         os.environ['CUDA_VISIBLE_DEVICES'] = cuda_num
     device = torch.device("mps" if torch.cuda.is_available() else "cpu")
@@ -46,9 +46,7 @@ def main():
     pathlib.Path("./checkpoints/").mkdir(parents=True, exist_ok=True)
     pathlib.Path("./logs/").mkdir(parents=True, exist_ok=True)
 
-    # TODO: load data
     print("\n# load dataset: %s " % args.dataset)
-
     dataset_train, args.nb_classes = build_poisoned_training_set(is_train=True, args=args)
     dataset_val_clean, dataset_val_poisoned = build_testset(is_train=False, args=args)
     

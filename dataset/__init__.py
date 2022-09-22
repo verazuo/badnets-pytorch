@@ -12,7 +12,7 @@ def build_init_data(dataname, download, dataset_path):
     return train_data, test_data
 
 def build_poisoned_training_set(is_train, args):
-    transform, detransform = build_transform(args.dataset) # will resize to 224 x 224
+    transform, detransform = build_transform(args.dataset)
     print("Transform = ", transform)
 
     if args.dataset == 'CIFAR10':
