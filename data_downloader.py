@@ -1,14 +1,12 @@
-import os
-import torch
-from data import load_init_data
 import pathlib
+from dataset import build_init_data
+
 
 def main():
-    device = torch.device("cuda") if torch.cuda.is_available() else torch.device("cpu")
-    data_path = './dataset/'
+    data_path = './data/'
     pathlib.Path(data_path).mkdir(parents=True, exist_ok=True) 
-    load_init_data('mnist', device,True, data_path)
-    load_init_data('cifar10', device,True, data_path)
+    build_init_data('mnist',True, data_path)
+    build_init_data('cifar10',True, data_path)
 
 if __name__ == "__main__":
     main()
