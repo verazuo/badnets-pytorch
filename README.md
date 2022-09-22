@@ -72,7 +72,14 @@ Attack Success Rate(ASR): 0.9311
 
 
 
+### Results
+
 Pre-trained models and results can be found in `./checkpoints/` and `./logs/` directory.
+
+| Dataset | Trigger Label | TCA    | ASR    | Log                                | Model                                                |
+| ------- | ------------- | ------ | ------ | ---------------------------------- | ---------------------------------------------------- |
+| MNIST   | 1             | 0.9818 | 0.9995 | [log](./logs/MNIST_trigger1.csv)   | [Backdoored model](./checkpoints/badnet-mnist.pth)   |
+| CIFAR10 | 1             | 0.5163 | 0.9311 | [log](./logs/CIFAR10_trigger1.csv) | [Backdoored model](./checkpoints/badnet-cifar10.pth) |
 
 You can use the flag `--load_local` to load the model locally without training.
 
@@ -80,7 +87,12 @@ You can use the flag `--load_local` to load the model locally without training.
 $ python main.py --dataset cifar10 --load_local  # load model file locally.
 ```
 
+
+
+### Other Parameters
+
 More parameters are allowed to set, run `python main.py -h` to see detail.
+
 ```
 $ python main.py -h
 usage: main.py [-h] [--dataset DATASET] [--nb_classes NB_CLASSES] [--load_local] [--loss LOSS] [--optimizer OPTIMIZER] [--epochs EPOCHS] [--batch_size BATCH_SIZE] [--num_workers NUM_WORKERS] [--lr LR]
