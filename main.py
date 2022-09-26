@@ -14,7 +14,7 @@ from deeplearning import evaluate_badnets, optimizer_picker, train_one_epoch
 from models import BadNet
 
 parser = argparse.ArgumentParser(description='Reproduce the basic backdoor attack in "Badnets: Identifying vulnerabilities in the machine learning model supply chain".')
-parser.add_argument('--dataset', default='MNIST', help='Which dataset to use (mnist or cifar10, default: mnist)')
+parser.add_argument('--dataset', default='MNIST', help='Which dataset to use (MNIST or CIFAR10, default: MNIST)')
 parser.add_argument('--nb_classes', default=10, type=int, help='number of the classification types')
 parser.add_argument('--load_local', action='store_true', help='train model or directly load model (default true, if you add this param, then load trained local model to evaluate the performance)')
 parser.add_argument('--loss', default='mse', help='Which loss function to use (mse or cross, default: mse)')
@@ -70,7 +70,7 @@ def main():
         print(f"Start training for {args.epochs} epochs")
         stats = []
         for epoch in range(args.epochs):
-            train_stats = train_one_epoch(data_loader_train, model, criterion, optimizer, args.loss)
+            train_stats = train_one_epoch(data_loader_train, model, criterion, optimizer, args.loss, device)
             test_stats = evaluate_badnets(data_loader_val_clean, data_loader_val_poisoned, model, device)
             print(f"# EPOCH {epoch}   loss: {train_stats['loss']:.4f} Test Acc: {test_stats['clean_acc']:.4f}, ASR: {test_stats['asr']:.4f}\n")
             

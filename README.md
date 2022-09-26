@@ -15,7 +15,7 @@ $ pip install -r requirements.txt
 
 
 ### Download Dataset
-Run below command to download `MNIST` and `cifar10` into `./dataset/`.
+Run below command to download `MNIST` and `CIFAR10` into `./dataset/`.
 
 ```
 $ python data_downloader.py
@@ -62,9 +62,9 @@ Test Clean Accuracy(TCA): 0.9818
 Attack Success Rate(ASR): 0.9995
 ```
 
-Run below command to see cifar10 result.
+Run below command to see CIFAR10 result.
 ```
-$ python main.py --dataset cifar10 --trigger_label=2  # train model with cifar10 and trigger label 2
+$ python main.py --dataset CIFAR10 --trigger_label=1  # train model with CIFAR10 and trigger label 1
 ... ... 
 Test Clean Accuracy(TCA): 0.5163
 Attack Success Rate(ASR): 0.9311
@@ -78,13 +78,13 @@ Pre-trained models and results can be found in `./checkpoints/` and `./logs/` di
 
 | Dataset | Trigger Label | TCA    | ASR    | Log                                | Model                                                |
 | ------- | ------------- | ------ | ------ | ---------------------------------- | ---------------------------------------------------- |
-| MNIST   | 1             | 0.9818 | 0.9995 | [log](./logs/MNIST_trigger1.csv)   | [Backdoored model](./checkpoints/badnet-mnist.pth)   |
-| CIFAR10 | 1             | 0.5163 | 0.9311 | [log](./logs/CIFAR10_trigger1.csv) | [Backdoored model](./checkpoints/badnet-cifar10.pth) |
+| MNIST   | 1             | 0.9818 | 0.9995 | [log](./logs/MNIST_trigger1.csv)   | [Backdoored model](./checkpoints/badnet-MNIST.pth)   |
+| CIFAR10 | 1             | 0.5163 | 0.9311 | [log](./logs/CIFAR10_trigger1.csv) | [Backdoored model](./checkpoints/badnet-CIFAR10.pth) |
 
 You can use the flag `--load_local` to load the model locally without training.
 
 ```
-$ python main.py --dataset cifar10 --load_local  # load model file locally.
+$ python main.py --dataset CIFAR10 --load_local  # load model file locally.
 ```
 
 
@@ -102,7 +102,7 @@ Reproduce the basic backdoor attack in "Badnets: Identifying vulnerabilities in 
 
 optional arguments:
   -h, --help            show this help message and exit
-  --dataset DATASET     Which dataset to use (mnist or cifar10, default: mnist)
+  --dataset DATASET     Which dataset to use (MNIST or CIFAR10, default: mnist)
   --nb_classes NB_CLASSES
                         number of the classification types
   --load_local          train model or directly load model (default true, if you add this param, then load trained local model to evaluate the performance)

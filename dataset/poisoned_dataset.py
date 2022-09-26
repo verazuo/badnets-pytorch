@@ -3,7 +3,7 @@ from typing import Callable, Optional
 
 from PIL import Image
 from torchvision.datasets import CIFAR10, MNIST
-
+import os 
 
 class TriggerHandler(object):
 
@@ -82,6 +82,15 @@ class MNISTPoison(MNIST):
         indices = range(len(self.targets))
         self.poi_indices = random.sample(indices, k=int(len(indices) * self.poisoning_rate))
         print(f"Poison {len(self.poi_indices)} over {len(indices)} samples ( poisoning rate {self.poisoning_rate})")
+
+    @property
+    def raw_folder(self) -> str:
+        return os.path.join(self.root, "MNIST", "raw")
+
+    @property
+    def processed_folder(self) -> str:
+        return os.path.join(self.root, "MNIST", "processed")
+
 
     def __shape_info__(self):
         return self.data.shape[1:]

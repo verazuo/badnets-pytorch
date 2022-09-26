@@ -1,6 +1,7 @@
 from .poisoned_dataset import CIFAR10Poison, MNISTPoison
 from torchvision import datasets, transforms
 import torch 
+import os 
 
 def build_init_data(dataname, download, dataset_path):
     if dataname == 'MNIST':

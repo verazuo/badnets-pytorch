@@ -14,10 +14,14 @@ def optimizer_picker(optimization, param, lr):
     return optimizer
 
 
-def train_one_epoch(data_loader, model, criterion, optimizer, loss_mode):
+def train_one_epoch(data_loader, model, criterion, optimizer, loss_mode, device):
     running_loss = 0
     model.train()
     for step, (batch_x, batch_y) in enumerate(tqdm(data_loader)):
+
+        batch_x = batch_x.to(device, non_blocking=True)
+        batch_y = batch_y.to(device, non_blocking=True)
+
         optimizer.zero_grad()
         output = model(batch_x) # get predict label of batch_x
         
@@ -45,6 +49,10 @@ def eval(data_loader, model, device, batch_size=64, print_perform=False):
     y_predict = []
     loss_sum = []
     for (batch_x, batch_y) in tqdm(data_loader):
+
+        batch_x = batch_x.to(device, non_blocking=True)
+        batch_y = batch_y.to(device, non_blocking=True)
+
         batch_y_predict = model(batch_x)
         loss = criterion(batch_y_predict, batch_y)
         batch_y_predict = torch.argmax(batch_y_predict, dim=1)
